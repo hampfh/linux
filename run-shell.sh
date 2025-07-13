@@ -17,7 +17,8 @@ echo "Starting QEMU..."
     -device nvme,drive=mynvme,serial=deadbeef,id=nvme0,x-tio=on,spdm_port=2323 \
     -net user,host=10.0.2.10,hostfwd=tcp:127.0.0.1:10021-:22 \
     -net nic,model=e1000 \
-    -trace events=./qemu-trace-events \
+    -trace enable=nvme_dma_mode_enabled \
+    -trace enable=nvme_dma_mode_disabled \
     -trace file=qemu-instance.log \
     -enable-kvm \
     -nographic \
