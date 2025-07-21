@@ -19,6 +19,7 @@ echo "Starting QEMU..."
     -net nic,model=e1000 \
     -trace enable=nvme_dma_mode_enabled \
     -trace enable=nvme_dma_mode_disabled \
+    -trace enable=nvme_bounce_buffer_copy_error \
     -trace file=qemu-instance.log \
     -enable-kvm \
     -nographic \
