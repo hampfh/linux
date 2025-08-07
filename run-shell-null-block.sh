@@ -14,7 +14,7 @@ taskset -c 2-9 ../qemu/build/qemu-system-x86_64 \
     -kernel "$KERNEL_DIR/arch/x86/boot/bzImage" \
     -append "console=ttyS0 root=/dev/sda earlyprintk=serial net.ifnames=0 nokaslr" \
     -drive file="$IMAGE_DIR/bookworm.img",format=raw \
-    -drive file="$IMAGE_DIR/blknvme",if=none,id=mynvme,format=raw,aio=native,cache=none \
+    -blockdev driver=null-co,read-zeroes=on,node-name=mynvme \
     -device nvme,drive=mynvme,serial=deadbeef,id=nvme0,x-tio=off,spdm_port=2323 \
     -net user,host=10.0.2.10,hostfwd=tcp:127.0.0.1:10021-:22 \
     -net nic,model=e1000 \
